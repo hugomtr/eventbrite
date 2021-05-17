@@ -1,5 +1,5 @@
 class ParticipationMailer < ApplicationMailer
-  default from: "no-reply@monsite.fr"
+  default from: "queau.j@gmail.com"
 
   def participate_email(user, participation)
     #on récupère l'instance user pour ensuite pouvoir la passer à la view en @user
