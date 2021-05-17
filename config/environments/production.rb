@@ -119,7 +119,7 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
   ActionMailer::Base.smtp_settings = {
-    :user_name => ENV["SENDGRID_LOGIN"],
+    :user_name => "apikey",
     :password => ENV["SENDGRID_PWD"],
     :domain => "monsite.fr",
     :address => "smtp.sendgrid.net",
