@@ -1,0 +1,9 @@
+<h1>ceci est la page show</h1>
+<div class="jumbotron text-center bg-dark text-light">
+  <h1>Titre: <%= @event.title %></h1>
+  <p>Description: <%= @event.description %> </p>
+  <p>nb d'inscrits: <%= Participation.where(event_id:@event.id).length %> </p>
+  <p>Contact Orga: <%= User.find_by(id: @event.user_id).email %></p> 
+  <a class="btn btn-primary" href="<%=events_path%>" >Back</a>
+  <a href="<%= user_path(@event.user_id) %>" class="card-link btn btn-dark">Admin Profile</a>
+</div>

@@ -8,16 +8,17 @@
 
 #test
 require "date"
-
+require 'faker'
 Participation.delete_all
 Event.delete_all
 User.delete_all
-
-u = User.create!(first_name: "jo", last_name: "ko", email: "queau.j@yopmail.com")
-l = User.create!(first_name: "lo", last_name: "koko", email: "lol.j@yopmail.com")
-p u
-p l
-e = Event.create!(start_date: DateTime.now, title: "YDNKJS", price: 1, description: "tjis is bs bsbsbsjvrf", duration: 60, location: "no where", user_id: u.id)
-p e
-par = Participation.create!(event: e, user_id: l.id, stripe_customer_id: l.id)
-p par
+10.times do
+  User.create(first_name: Faker::Name.first_name,last_name: Faker::Name.last_name,description: Faker::Lorem.sentences(2).join,email: Faker::Internet.safe_email,password:Faker::Lorem.characters(number: 10)) 
+end
+10.times do
+  Event.create!(start_date: DateTime.now, title: "YDNKJS", price: 1, description: "tjis is bs bsbsbsjvrf", duration: 60, 
+    location: "no where", user_id: User.all.sample.id)
+end
+10.times do
+  Participation.create!(event: Event.all.sample, user_id: User.all.sample.id, stripe_customer_id: Faker::Lorem.characters(number: 10))
+end

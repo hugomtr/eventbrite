@@ -1,0 +1,7 @@
+<h1>this is the page of User <%= @user.first_name %> </h1>
+<br>
+Email <%= @user.email%>
+<br>
+<% if @user == current_user %>
+  <a href="<%= edit_user_registration_path %>" class="card-link btn btn-dark">Edit Email/password</a>
+<% end %>

@@ -1,0 +1,28 @@
+<form > 
+  <%= form_for @event, url: {action: "create"} do |f| %>
+  <br>
+    Title
+    <div class="form_group">
+      <%= f.text_field :title %>
+    </div>
+     Description
+    <div class="form_group">
+      <%= f.text_area :description %>
+    </div>
+    Price
+    <div class="form_group">
+      <%= f.number_field :price %>
+    </div>
+    Duration
+    <div class="form_group">
+      <%= f.number_field :duration %>
+    </div>
+    Location
+    <div class="form_group">
+      <%= f.text_field :title %>
+    </div>
+    <div class="form_group">
+      <%= f.submit "Create", class: "btn btn-default btn-primary"%>
+    </div>
+  <% end %>
+</form>
