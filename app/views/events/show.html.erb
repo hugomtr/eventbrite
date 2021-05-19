@@ -7,3 +7,11 @@
   <a class="btn btn-primary" href="<%=events_path%>" >Back</a>
   <a href="<%= user_path(@event.user_id) %>" class="card-link btn btn-dark">Admin Profile</a>
 </div>
+
+<% if !(Participation.where(event_id:@event.id).map{|u| u.user_id}.include?(current_user.id)) && !(@event.user_id == current_user.id) %>  
+  <a href="<%= new_event_charge_path(@event.id) %>" class="card-link btn btn-dark">Inscription</a>
+<% end %>
+
+<% if @event.user_id == current_user.id %>  
+  <a href="<%=  event_participations_path(params[:id]) %>" class="card-link btn btn-dark">Mon Espace Evenement</a>
+<% end %>

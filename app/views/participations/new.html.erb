@@ -1,0 +1,4 @@
+<h1>Thank you for you inscription <%= current_user.email%> </h1>
+<% Participation.create(user_id:11,event_id:params[:gossip_id],stripe_customer_id: "aaaaaaaaaa") %>%
+
+<%= link_to 'Main Page', events_path %>

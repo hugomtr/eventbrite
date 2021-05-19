@@ -1,5 +1,6 @@
 require 'date'
 class EventsController < ApplicationController
+
   def index
     @events = Event.all
   end
@@ -11,6 +12,11 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
   end
+
+  def edit
+    @event = Event.find(params[:id])
+  end
+
 
   def create
     @event = Event.new(event_params)
@@ -26,17 +32,30 @@ class EventsController < ApplicationController
     end  
   end
 
-  def destroy
-    @event.destroy
+  def update
+    @event = Event.find(params[:id])
+    @event.update(event_params)
     respond_to do |format|
-      format.html { redirect_to events_url, notice: "Event was successfully destroyed." }
-      format.json { head :no_content }
+      if @event.update(event_params)
+        format.html { redirect_to @event, notice: "Event was successfully updated." }
+        format.json { render :show, status: :ok, location: @event }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @event.errors, status: :unprocessable_entity }
+      end
     end
   end
 
+  def destroy
+    @event = Event.find(11)
+    @event.destroy
+    redirect_to 'events'
+  end
+
+
   private
   def event_params
-    params.require(:event).permit(:start_date, :user_id, :duration, :title)
+    params.require(:event).permit(:start_date, :user_id, :duration, :title, :description)
   end
 
   def authenticate_user

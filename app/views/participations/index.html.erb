@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Participations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Event</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+      
+  <tbody>
+    <% @participations.each do |participation| %>
+      <% if Participation.where(event_id:params[:event_id]).include?(participation)%>
+        <td><%= User.find_by(id:participation.user_id).first_name %></td>
+      <% end %>
+    <%end%>
+  </tbody>
+<a href="<%= edit_event_path(params[:event_id])%>" class="card-link btn btn-dark" >Edit Event</a>
+<br>
+<br>
+<a href="/events/<%=params[:id]%>" class="btn btn-danger" data-confirm="Êtes-vous sûr ?" data-method="DELETE">Cancel Event</a>
