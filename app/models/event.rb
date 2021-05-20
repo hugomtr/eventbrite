@@ -8,6 +8,7 @@ class Event < ApplicationRecord
 
   belongs_to :admin, class_name: "User", foreign_key: "user_id", dependent: :destroy
   has_many :participations
+  has_one_attached :event_picture
 
   def duration_positive_and_multiple_of_five
     errors.add(:duration, "must be postive and multiple of 5") if

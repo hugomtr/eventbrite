@@ -16,3 +16,19 @@
 <% if @event.user_id == current_user.id %>  
   <a href="<%=  event_participations_path(params[:id]) %>" class="card-link btn btn-dark">Mon Espace Evenement</a>
 <% end %>
+
+<p>Bienvenue sur la page d'ajout d'un event_picture pour le User portant l'id : <%=@event.id%></p>
+<h3>Image actuel</h3>
+<%if @event.event_picture.attached?%>
+  <%= image_tag @event.event_picture, alt: 'event_picture' %>
+<%else%>
+  <p>=== Il n'y a pas encore d'event_picture lié à cet utilisateur ===</p>
+<%end%>
+
+<% if @event.user_id == current_user.id %>
+  <h3>Changer d'event_picture ?</h3>
+  <%= form_tag event_event_pictures_path(@event), multipart: true do %>
+    <%= file_field_tag :event_picture %>
+    <%= submit_tag "mettre à jour" %>
+  <% end %>
+<% end %>
