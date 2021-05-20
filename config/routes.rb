@@ -8,7 +8,11 @@ Rails.application.routes.draw do
     resources :participations
     resources :charges, only: [:new, :create]
   end
-  resources :users, only: [:index,:show]
+
+  resources :users, only: [:index,:show] do
+    resources :avatars, only: [:create]
+  end
+
 end
 
 
