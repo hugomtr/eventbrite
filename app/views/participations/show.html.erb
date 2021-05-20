@@ -5,5 +5,5 @@
   <%= User.find_by(id:@participation.user_id).email %>
 </p>
 
-<%= link_to 'Edit', edit_participation_path(@participation) %> |
-<%= link_to 'Back', participations_path %>
+<%= link_to 'Edit', edit_event_participation_path(@participation) %> |
+<%= link_to 'Back', event_participations_path(@participation) %>

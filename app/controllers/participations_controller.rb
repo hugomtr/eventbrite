@@ -21,8 +21,8 @@ class ParticipationsController < ApplicationController
 
   # POST /participations or /participations.json
   def create
-    @participation = Participation.new
-    @participation.update(user_id:User.find_by(email:current_user.email).id,event_id:params[:event_id],stripe_customer_id: Faker::Lorem.characters(number: 10))
+    @participation = Participation.new(participation_params)
+    @participation.update(user_id:current_user.id,event_id:params[:event_id])
     respond_to do |format|
       if @participation.save
         format.html { redirect_to '/events', notice: "Gossip was successfully created." }
@@ -36,7 +36,7 @@ class ParticipationsController < ApplicationController
   # PATCH/PUT /participations/1 or /participations/1.json
   def update
     respond_to do |format|
-      if @participation.update(participation_)
+      if @participation.update(participation_params)
         format.html { redirect_to @participation, notice: "Participation was successfully updated." }
         format.json { render :show, status: :ok, location: @participation }
       else
@@ -62,7 +62,7 @@ class ParticipationsController < ApplicationController
     end
 
     # Only allow a list of trusted parameters through.
-    def participation_
-      params.require(:participation).permit(:event_id)
+    def participation_params
+      params.require(:participation).permit(:event_id,:stripe_customer_id)
     end
 end

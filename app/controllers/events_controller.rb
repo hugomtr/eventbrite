@@ -20,7 +20,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    @event.update(start_date: DateTime.now ,user_id: current_user.id )
+    @event.update(user_id: current_user.id )
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: "Event was successfully created." }
