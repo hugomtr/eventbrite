@@ -10,6 +10,49 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
  */
+
+
+
+navbar {
+  background-color:black !important;
+} 
+
+.nav-link { 
+  color: white !important;
+}
+#home_container {
+margin-top: 25px;
+background-color: white;
+}
+  
+.jumbotron {
+background-image: url('bar.jpg');
+background-position: center left;
+background-repeat: no-repeat;
+background-size: cover;
+color: darkgrey;
+height: 650px;
+padding-top: 2%;
+border-radius: 10px;
+margin-top: 50px;
+}
+.jumbotron h1 {
+  color:white;
+}
+
+footer {
+  height:6vh;
+  text-align: center;
+  padding-top: -10px;
+  color: white;
+}
+footer a {
+  text-decoration:none;
+  color:white;
+}
+
+.container {
+  margin-top: 3vh;;
+  margin-bottom: 7vh;
+}
